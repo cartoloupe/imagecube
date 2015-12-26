@@ -1,6 +1,11 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all
+    @images = Image.last(6)
+
+    respond_to do |format|
+      format.json { render json: @images.map(&:file_url)}
+      format.html {}
+    end
   end
 
   def new
@@ -9,11 +14,10 @@ class ImagesController < ApplicationController
 
   def create
     STDOUT.puts "IN THE IMAGES CONTROLLER"
-    require 'pry'; binding.pry
     @image = Image.new(image_params)
 
     if @image.save
-      redirect_to images_path, notice: "Image uploaded."
+      redirect_to cube_show_path, notice: "Image uploaded."
     else
       render 'new'
     end
