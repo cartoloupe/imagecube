@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'images/index'
+
+  get 'images/new'
+
+  get 'images/create'
+
+  get 'images/destroy'
+
   get 'cube/show'
 
   get 'cube/load'
@@ -17,6 +25,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :images
 
   # Example resource route with options:
   #   resources :products do
