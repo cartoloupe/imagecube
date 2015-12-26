@@ -19,8 +19,21 @@
       document.body.appendChild( renderer.domElement );
 
       var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-      var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-      var cube = new THREE.Mesh( geometry, material );
+      var materials = [];
+      _(6).times(function(i,d){
+        console.log(i + 1);
+        var img = new Image();
+        img.src = '/s'+(i+1)+ '.jpg';
+        var tex = new THREE.Texture(img);
+        img.tex = tex;
+        img.onload = function(){
+          this.tex.needsUpdate = true;
+        };
+        var mat = new THREE.MeshBasicMaterial({map: tex, transparent: true, overdraw: true});
+        materials.push(mat);
+      });
+
+      var cube = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial(materials) );
       scene.add( cube );
 
       camera.position.z = 5;
