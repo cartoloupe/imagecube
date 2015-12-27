@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cubex: 1.5
+  cubey: 1.5
+  cubez: 1.5
+
+two:
+  cubex: 1.5
+  cubey: 1.5
+  cubez: 1.5

@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-readyselector.js
 //= require three.min.js
 //= require underscore
 //= require_tree .
