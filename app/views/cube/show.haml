@@ -1,9 +1,0 @@
-.form
-  = form_for :image, :url => images_path, :html => { multipart: true } do |form|
-    = form.file_field :file
-    = form.submit 'LOAD', class: 'btn btn-primary'
-
-
-
-
-

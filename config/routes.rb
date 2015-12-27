@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'images/index'
-
-  get 'images/new'
-
-  get 'images/create'
-
-  get 'images/destroy'
-
   get 'cube/show'
 
   get 'cube/load'
@@ -15,7 +7,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'cube#show'
+  root 'images#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
