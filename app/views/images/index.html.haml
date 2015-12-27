@@ -1,17 +1,23 @@
-%h1 Settings
-%table
-- @images.each_with_index do |i, index|
-  - image = Image.find_by(id: index+1) || Image.new(id: index+1)
+%ol
+  %li Choose a file, and then click 'LOAD'
+  %li After loading 6 images, click 'CUBE'
+%table{:style => "border: 2px solid black"}
   %tr
     %td
-      .form
-        = form_for image, :url => image_path(index+1), :html => { multipart: true }, method: :patch do |form|
-          = form.file_field :file
-          = form.submit 'LOAD', class: 'btn btn-primary'
-          = form.label :file_name, image.file_identifier || "no file loaded"
+      %table{:style => "border: 1px solid black"}
+        - @images.each_with_index do |i, index|
+          - image = Image.find_by(id: index+1) || Image.new(id: index+1)
+          %tr
+            %td
+              .form
+                = form_for image, :url => image_path(index+1), :html => { multipart: true }, method: :patch do |form|
+                  = form.file_field :file
+                  = form.submit 'LOAD', class: 'btn btn-primary'
+                  = form.label :file_name, image.file_identifier || "no file loaded"
     %td
-
-%br
-= link_to 'CUBE', cube_show_path
-
-
+      .form
+        = form_for :cube, :url => cube_update_path, method: :patch do |form|
+          = form.text_field :cubex, class: "cubex", value: "0.001"
+          = form.text_field :cubey, class: "cubey", value: "0.001"
+          = form.text_field :cubez, class: "cubez", value: "0.001"
+          = form.submit 'CUBE', class: 'btn btn-primary'

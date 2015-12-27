@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get 'cube', controller: :cube, action: :index
+  get 'cube/index'
   get 'cube/show'
-
-  get 'cube/load'
+  patch 'cube/update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
