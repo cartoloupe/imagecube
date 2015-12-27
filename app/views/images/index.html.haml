@@ -1,1 +1,17 @@
-%h1 Images#index
+%h1 Settings
+%table
+- @images.each_with_index do |i, index|
+  - image = Image.find_by(id: index+1) || Image.new(id: index+1)
+  %tr
+    %td
+      .form
+        = form_for image, :url => image_path(index+1), :html => { multipart: true }, method: :patch do |form|
+          = form.file_field :file
+          = form.submit 'LOAD', class: 'btn btn-primary'
+          = form.label :file_name, image.file_identifier || "no file loaded"
+    %td
+
+%br
+= link_to 'CUBE', cube_show_path
+
+
