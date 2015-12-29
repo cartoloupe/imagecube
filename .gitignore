@@ -16,6 +16,4 @@
 !/log/.keep
 /tmp
 
-public/*
-
 .*.swp

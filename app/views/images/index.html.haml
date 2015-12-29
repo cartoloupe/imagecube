@@ -14,10 +14,11 @@
                   = form.file_field :file
                   = form.submit 'LOAD', class: 'btn btn-primary'
                   = form.label :file_name, image.file_identifier || "no file loaded"
+      = button_to :clear, delete_all_images_path, method: :get
     %td
       .form
         = form_for :cube, :url => cube_update_path, method: :patch do |form|
-          = form.text_field :cubex, class: "cubex", value: "0.001"
-          = form.text_field :cubey, class: "cubey", value: "0.001"
-          = form.text_field :cubez, class: "cubez", value: "0.001"
+          = form.text_field :cubex, class: "cubex", value: @cube.cubex
+          = form.text_field :cubey, class: "cubey", value: @cube.cubey
+          = form.text_field :cubez, class: "cubez", value: @cube.cubez
           = form.submit 'CUBE', class: 'btn btn-primary'

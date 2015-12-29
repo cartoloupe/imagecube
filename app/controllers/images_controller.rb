@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   def index
+    @cube = Cube.first || Cube.create!(cubex: 0.001, cubey: 0.001, cubex: 0.001)
     @images = [
       @image1 = Image.find_by(id: 1),
       @image2 = Image.find_by(id: 2),
@@ -23,6 +24,7 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
 
     if @image.save
+      @image.file.store!
       redirect_to images_path, notice: "Image uploaded."
     else
       render 'new'
@@ -43,6 +45,14 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @image.destroy
     redirect_to images_path, notice: "Image deleted."
+  end
+
+  def delete_all
+    Image.all.map(&:destroy)
+    (1..6).each do |n|
+      Image.create(id: n, file: open( Rails.public_path.join('i2.png')) )
+    end
+    redirect_to images_path, notice: "Images deleted."
   end
 
   private
