@@ -10,9 +10,15 @@ canvas {
   width: 800px;
   height: 800px;
   background-color: #add8e6;
+
+  .preview {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .settings {
   float: right;
   text-align: right;
 }
+

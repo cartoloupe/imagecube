@@ -22,3 +22,10 @@
           = form.text_field :cubey, class: "cubey", value: @cube.cubey
           = form.text_field :cubez, class: "cubez", value: @cube.cubez
           = form.submit 'CUBE', class: 'btn btn-primary'
+%div
+  %table
+    %tr
+      %td{:style => "vertical-align: middle;"}
+        %p{:style => "font-size: 24px; padding-bottom: 50%;"} PREVIEW:
+      %td.preview
+
